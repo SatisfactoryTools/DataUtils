@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+use SFTools\Data\Commands\ParseCommand;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$application = new Application('Satisfactory Data Parser', '1.0.0');
+$application->addCommand(new ParseCommand());
+$application->run();

@@ -1,0 +1,15 @@
+.claude
+.idea
+.git
+vendor
+tests
+
+!composer.json
+!composer.lock
+
+Dockerfile
+.dockerignore
+.gitignore
+.editorconfig
+*.md
+LICENSE
