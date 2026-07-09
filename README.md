@@ -6,7 +6,13 @@ This package can parse exported files from Satisfactory to generate info about r
 
 You need to either have Docker installed, or PHP 8.5+.
 
-For docker, you need to build the container once, and then you can just run it:
+For docker, you can use the prebuilt image from GitHub Container Registry:
+
+```shell
+docker run --rm -v "$PWD:/data" ghcr.io/satisfactorytools/docs-parser [command]
+```
+
+Or build the container yourself once, and then just run it:
 
 ```shell
 docker build -t docs-parser .
