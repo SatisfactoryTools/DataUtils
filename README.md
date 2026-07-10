@@ -1,4 +1,4 @@
-# SatisfactoryTools/DataUtils
+# SatisfactoryTools/DocsParser
 
 This package can parse exported files from Satisfactory to generate info about recipes, items, schematics, etc.
 
