@@ -79,6 +79,28 @@ class ClassData
 	}
 
 	/**
+	 * Extracts the texture path from a packed Slate brush struct, e.g.
+	 * (..., ResourceObject="/Script/Engine.Texture2D'/Game/Path/Icon.Icon'", ...)
+	 * and returns it in the same format plain icon fields use: "Texture2D /Game/Path/Icon.Icon".
+	 */
+	public function getBrushIcon(string $key): ?string
+	{
+		try {
+			$brush = Unpacker::unpack((string) $this->get($key));
+		} catch (UnpackerException) {
+			return null;
+		}
+
+		$resource = is_array($brush) ? ($brush['ResourceObject'] ?? null) : null;
+		if (!is_string($resource)) {
+			return null;
+		}
+
+		$result = Strings::match($resource, '/Texture2D\'(.+?)\'/');
+		return $result ? 'Texture2D ' . $result[1] : null;
+	}
+
+	/**
 	 * @return Event[]
 	 */
 	public function getEvents(string $key): array

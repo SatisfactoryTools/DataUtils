@@ -22,9 +22,10 @@ class SchematicHandler extends ClassNameFilteredHandler
 
 		$schematic = new Schematic;
 		$schematic->className = $className;
-		$schematic->icon = $data->getString('mSchematicIcon');
+		$schematic->icon = $data->getBrushIcon('mSchematicIcon');
 		if (!$schematic->icon) {
-			$schematic->icon = $data->getString('mSmallSchematicIcon');
+			$smallIcon = $data->getString('mSmallSchematicIcon');
+			$schematic->icon = $smallIcon !== '' && $smallIcon !== 'None' ? $smallIcon : null;
 		}
 		$schematic->name = $displayName;
 		$schematic->description = $data->getString('mDescription');
